@@ -2,7 +2,7 @@ THP semaine 3 - exercice Tic Tac Toe
 
 ____________peer - programming ____________
 
-GOUACIDE Kwevan
+GOUACIDE Kwevan /
 ENG Eang-Ly
 
 ____________     règles de jeu        ____________
