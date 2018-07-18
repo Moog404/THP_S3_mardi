@@ -16,6 +16,7 @@ class Player
 
 end
 
+
 class Board
   attr_accessor :case, :stop_game
   def initialize
@@ -65,8 +66,14 @@ class Board
 
   # cette fonction est horrible sert à verifier si un des joueur à entré une combinaison gagnante
   def win
-    if @case[0] != ' ' && @case[0] == @case[1] && @case[0] == @case[2] || @case[3] != ' ' && @case[3] == @case[4] && @case[3] == @case[5] || @case[6] != ' ' && @case[6] == @case[7] && @case[6] == @case[8] || @case[0] != ' ' && @case[0] == @case[3] && @case[0] == @case[6] || @case[1] != ' ' && @case[1] == @case[4] && @case[1] == @case[7] || @case[2] != ' ' && @case[2] == @case[5] && @case[2] == @case[8] || @case[0] != ' ' && @case[0] == @case[4] && @case[0] == @case[8] || @case[2] != ' ' && @case[2] == @case[4] && @case[2] == @case[6]
-
+    if  @case[0] != ' ' && @case[0] == @case[1] && @case[0] == @case[2] ||
+        @case[3] != ' ' && @case[3] == @case[4] && @case[3] == @case[5] || 
+        @case[6] != ' ' && @case[6] == @case[7] && @case[6] == @case[8] ||
+        @case[0] != ' ' && @case[0] == @case[3] && @case[0] == @case[6] || 
+        @case[1] != ' ' && @case[1] == @case[4] && @case[1] == @case[7] || 
+        @case[2] != ' ' && @case[2] == @case[5] && @case[2] == @case[8] || 
+        @case[0] != ' ' && @case[0] == @case[4] && @case[0] == @case[8] || 
+        @case[2] != ' ' && @case[2] == @case[4] && @case[2] == @case[6]
       true
     else
       false
