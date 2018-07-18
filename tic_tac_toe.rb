@@ -1,17 +1,13 @@
+
+
+
+# On attribut  un nom et un symbole pour chaque joueur 
 class Player
   attr_accessor :name, :symbol
 
   def initialize(name, symbol)
     @name = name
     @symbol = symbol
-  end
-
-  def get_name
-    @name
-  end
-
-  def get_symbol
-    @symbol
   end
 
 end
@@ -34,8 +30,10 @@ class Board
     puts '|-----------------|       |-----------------|'
   end
 
+
   def update_board(player)
-    puts "#{player.get_name}, à toi de jouer!!! Entre une valeur de 1 à 9"
+    puts "#{player.name}(#{player.symbol})à toi de jouer!!! Entre une valeur de 1 à 9"
+    print ">"
     value = gets.chomp.to_i
     value -= 1
 
@@ -47,11 +45,12 @@ class Board
       return false
     end
 
-    @case[value] = player.get_symbol
+    @case[value] = player.symbol
 
     draw_board
+
     if win
-      puts "#{player.get_name} à gagné !"
+      puts "#{player.name} à gagné !"
       @stop_game = true
     elsif !(@case.any? { |a| a == ' ' })
       puts 'match nul'
@@ -60,11 +59,7 @@ class Board
     true
   end
 
-  def get_stop_game
-    @stop_game
-  end
-
-  # cette fonction est horrible sert à verifier si un des joueur à entré une combinaison gagnante
+  #sert à verifier si un des joueur à entré une combinaison gagnante
   def win
     if  @case[0] != ' ' && @case[0] == @case[1] && @case[0] == @case[2] ||
         @case[3] != ' ' && @case[3] == @case[4] && @case[3] == @case[5] || 
@@ -86,10 +81,10 @@ class Game
   attr_accessor :player1, :player2
 
   def initialize
-    puts 'Entrez le nom du 1er joueur:'
+    puts 'Entrez le nom du 1er joueur, celui-ci jouera avec les X:'
     print '>'
     @player1 = Player.new(gets.chomp, 'X')
-    puts 'Entrez le nom du 2ème joueur:'
+    puts 'Entrez le nom du 2ème joueur: celui-ci jouera avec les O:'
     print '>'
     @player2 = Player.new(gets.chomp, 'O')
   end
@@ -97,22 +92,18 @@ class Game
   def go
     board = Board.new
     board.draw_board
-
     turn = true
 
-    until board.get_stop_game
+    until board.stop_game
       # break if board.get_stop_game
-
-      if turn == true
+    if  turn == true
         turn = false
-
         turn = !turn unless board.update_board(player1)
       else
         turn = true
-
         turn = !turn unless board.update_board(player2)
       end
-      end
+    end
   end
 end
 
